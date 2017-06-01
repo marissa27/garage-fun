@@ -5,8 +5,10 @@
 /*--------- DOOR --------------*/
 
 .container {
-	position: relative;
-	overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  width: 900px;
+  height: 487px;
 }
 .door {
 	position: absolute;

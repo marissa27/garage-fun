@@ -18,6 +18,30 @@ getItems = () => {
   });
 };
 
+$('.submit').on('click', (e) => {
+  e.preventDefault();
+  let $name = $('.name').val();
+  let $reason = $('.reason').val();
+  let $cleanliness = $('.dropdown-form').val();
+  clearFields();
+  addItem($name, $reason, $cleanliness);
+});
+
+addItem = (name, reason, cleanliness) => {
+  fetch('/api/v1/items', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body:
+      JSON.stringify({ 'name': name, 'reason': reason, 'cleanliness': cleanliness })
+  }).then((response) => {
+    return response.json()
+  }).then((json) => {
+    appendItem(json.name, json.reason, json.cleanliness);
+  }).catch((error) => {
+    console.error('error: ', error);
+  });
+};
+
 appendItem = (name, reason, cleanliness) => {
   const $itemCard = $('.item-card');
   $itemCard.prepend(
@@ -25,7 +49,8 @@ appendItem = (name, reason, cleanliness) => {
   );
 };
 
-// <ul>
-//   <li>Reason: ${reason}</li>
-//   <li>Cleanliness: ${cleanliness}</li>
-// </ul>
+clearFields = () => {
+ $('.name').val('');
+ $('.reason').val('');
+ $('.dropdown-form').val('');
+};
