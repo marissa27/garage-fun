@@ -4,12 +4,20 @@ $(document).ready(() => {
 
 let itemCount;
 
+appendCount = (number) => {
+  const $spanNumber = $('.item-number');
+  $spanNumber.html(
+    `<span class='item-number'>${number}</span>`);
+};
+
 getItems = () => {
   fetch('/api/v1/items', {
     method: 'GET'
   }).then((response) => {
     return response.json()
   }).then((json) => {
+    itemCount = json.length
+    appendCount(itemCount)
     const items = json.map(item => {
       appendItem(item.name, item.cleanliness, item.id)
     });
@@ -23,7 +31,6 @@ $('.submit').on('click', (e) => {
   let $name = $('.name').val();
   let $reason = $('.reason').val();
   let $cleanliness = $('.dropdown-form').val();
-  console.log($cleanliness)
   clearFields();
   addItem($name, $reason, $cleanliness);
 });
@@ -39,7 +46,20 @@ addItem = (name, reason, cleanliness) => {
   }).then((json) => {
     appendItem(json.name, json.reason, json.cleanliness);
   }).catch((error) => {
-    console.error('error: ', error);
+    error: 'cannot add that item';
+  });
+};
+
+updateCount = () => {
+  fetch('/api/v1/items', {
+    method: 'GET'
+  }).then((response) => {
+    return response.json()
+  }).then((json) => {
+    itemCount = json.length
+    appendCount(itemCount)
+  }).catch((error) => {
+    error: 'cannot getItems'
   });
 };
 
@@ -48,6 +68,7 @@ appendItem = (name, cleanliness, id) => {
   $itemCard.prepend(
     `<li data-id='${id}' class='garage-list-item'>${name}</li>`
   );
+  updateCount()
 };
 
 clearFields = () => {
@@ -68,20 +89,16 @@ const grabItem = (id) => {
   .then(items => {
     items.map((item) => {
       showItem(item.name, item.reason, item.cleanliness)
-      console.log(item)
     })
   })
 }
 
 oneItem = (id) => {
-  console.log('oneItem')
   fetch('/api/v1/items/${id}', {
     method: 'GET'
   }).then((response) => {
-    console.log('hello')
     return response.json()
   }).then((json) => {
-    console.log(json)
       showItem(json.name, json.reason, json.cleanliness)
   }).catch((error) => {
     error: 'cannot get that item'
@@ -89,9 +106,8 @@ oneItem = (id) => {
 };
 
 showItem = (name, reason, cleanliness) => {
-  console.log('showItem')
   const $itemInfo = $('.item-info');
-  $itemInfo.prepend(
+  $($itemInfo).empty().append(
     `<h3>${name}</h3>
     <h4>${reason}</h4>
     <h4>${cleanliness}</h4>
