@@ -1,7 +1,7 @@
 {
   "name": "garage-fun",
   "version": "1.0.0",
-  "description": "",
+  "description": "Final assessment for Turing.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +12,7 @@
   "dependencies": {
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "knex": "^0.13.0"
+    "knex": "^0.13.0",
+    "pg": "^6.2.3"
   }
 }
