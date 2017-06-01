@@ -25,12 +25,16 @@ app.get('/', (request, response) => {
 // -------------------
 app.get('/api/v1/items', (request, response) => {
   database('items').select()
-  .then(item => {
-    response.status(200).json(item);
-  })
-  .catch(error => {
-    response.status(500).send({ error })
-  });
+  .then(item => response.status(200).json(item))
+  .catch(error => response.status(500).send({ error }))
+});
+
+app.get('/api/v1/items/:id', (request, response) => {
+  database('items').where('id', request.params.id).select()
+    .then(item => response.status(200).json(item))
+    .catch((error) => {
+      response.status(404).send('This item does not exist', error);
+    });
 });
 
 app.post('/api/v1/items', (request, response) => {

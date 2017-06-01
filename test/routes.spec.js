@@ -146,7 +146,30 @@ describe('Everything', () => {
       })
     })
 
-    
+    it('should return specific item', (done) => {
+      chai.request(server)
+      .get('/api/v1/items/1')
+      .end((error, response) => {
+        response.should.have.status(200)
+        response.should.be.json
+        response.body.should.be.a('array')
+        response.body.length.should.equal(1)
+        response.body[0].should.have.property('name')
+        response.body[0].name.should.equal('ring')
+        done()
+      });
+    });
+
+    it('should return 404 for a non existent item route', (done) => {
+      chai.request(server)
+      .get('/api/v1/item/27')
+      .end((error, response) => {
+        response.should.have.status(404);
+        done();
+      });
+    })
+
+
 
 
   })
