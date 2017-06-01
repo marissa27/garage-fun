@@ -1,19 +1,28 @@
+header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .logo {
   width: 200px;
 }
 
 /*--------- DOOR --------------*/
-
-/*.container {
-  position: relative;
-  overflow: hidden;
-  width: 900px;
-  height: 487px;
+.remote {
+  width: 50px;
 }
+
+.container {
+  position: relative;
+  overflow: scroll;
+  width: 100%;
+}
+
 .door {
 	position: absolute;
 	height: 100%;
-	width: 65%;
+	width: 100%;
 	top: 0%;
 	transition: all ease .9s;
 	-moz-transition: all ease .9s;
@@ -25,22 +34,35 @@
   background-size: cover;
 }
 
-.container:hover .door {
+.shut {
 	top: -100%;
-}*/
-
-/* ------ FORM -------------- */
-.heading {
-  display: flex;
-  align-items: center;
 }
 
-.add-item {
-  margin-left: 20px;
+/* ------ FORM -------------- */
+
+h3 {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+.submit {
+  font-family: sans-serif;
+  text-transform: uppercase;
+  background-color: #fdac00;
+  padding: 15px;
+  border-radius: 3px;
+  box-shadow: 1px 1px 1px #00d0bc;
+
 }
 
 .submit:hover {
-  background-color: pink;
+  background-color: #1e2424;
+  color: white;
+  box-shadow: none;
 }
 
 /*----- TYPES of CLEAN ---------*/

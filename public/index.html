@@ -1,40 +1,44 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="main.css">
+    <meta charset='utf-8'>
+    <link rel='stylesheet' href='main.css'>
     <title>Garage</title>
   </head>
   <body>
 
-    <div class="heading">
+    <div class='heading'>
       <header>
-        <img src='./images/garage-logo.svg' class="logo" alt="garage logo">
+        <img src='./images/garage-logo.svg' class='logo' alt='garage logo'>
+        <section class='remote-area'>
+          <img class='remote' src='./images/remote.svg'>
+        </section>
       </header>
 
-      <section class="add-item">
-        <h3>Add More Items</h3>
-        <form class="add-item-form">
-          <input class="name form-field" type="text" placeholder="What is this thing??">
-          <input class="reason form-field" type="text" placeholder="Gimme a reason for it.">
 
-          <select class="dropdown-form form-field" placeholder="Cleanliness Level">
-            <option class="cleanliness" value="" disabled selected>Select Cleanliness</option>
+      <section class='add-item'>
+        <h3>Add More Items</h3>
+        <form class='add-item-form'>
+          <input class='name form-field' type='text' placeholder='Name'>
+          <input class='reason form-field' type='text' placeholder='Reason'>
+
+          <select class='dropdown-form form-field' placeholder='Cleanliness Level'>
+            <option class='cleanliness' value='' disabled selected>Select Cleanliness</option>
             <option class='drop-item' value='sparkling'>Sparkling</option>
             <option class='drop-item' value='dusty'>Dusty</option>
             <option class='drop-item' value='rancid'>Rancid</option>
           </select>
 
-          <input class="submit" type='submit' value="Submit Item">
         </form>
+        <input class='submit' type='submit' value='Submit Item'>
       </section>
     </div>
 
     <h2>I have <span class='item-number'></span> item(s).</h2>
 
-    <section class="container">
-      <article class="sliding-door">
-        <div class="door"></div>
+    <section class='container'>
+      <article class='sliding-door'>
+        <div class='door'></div>
 
         <section class='garage'>
           <article class='item-card'>
@@ -50,7 +54,7 @@
 
     </section>
 
-    <script type="text/javascript" src="./jquery.js"></script>
-    <script type="text/javascript" src="./index.js"></script>
+    <script type='text/javascript' src='./jquery.js'></script>
+    <script type='text/javascript' src='./index.js'></script>
   </body>
 </html>
