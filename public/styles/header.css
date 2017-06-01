@@ -1,0 +1,15 @@
+header {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 50px;
+}
+
+.logo {
+  width: 200px;
+}
+
+.count-area {
+  position: absolute;
+  top: 0;
+}

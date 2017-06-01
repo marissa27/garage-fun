@@ -1,0 +1,23 @@
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: .5px solid black;
+}
+
+li {
+  margin: 5px 0;
+  width: 50%;
+}
+
+.sparkling {
+  color: aquamarine;
+}
+
+.dusty {
+  color: grey;
+}
+
+.rancid {
+  color: brown;
+}

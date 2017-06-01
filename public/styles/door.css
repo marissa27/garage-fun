@@ -1,0 +1,34 @@
+.remote {
+  width: 50px;
+}
+
+.remote-words {
+  width: 90px;
+  font-size: 10px;
+}
+
+.container {
+  overflow: scroll;
+  position: relative;
+  width: 65%;
+  min-height: 500px;
+}
+
+.door {
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	top: 0%;
+	transition: all ease .9s;
+	-moz-transition: all ease .9s;
+	-webkit-transition: all ease .9s;
+	-o-transition: all ease .9s;
+	-ms-transition: all ease .9;
+	left: 0%;
+	background: url(../images/garage.svg) no-repeat;
+  background-size: cover;
+}
+
+.shut {
+	top: -100%;
+}

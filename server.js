@@ -20,14 +20,12 @@ app.get('/', (request, response) => {
   })
 });
 
-// -------------------
-// ---- API CALLS ----
-// -------------------
 app.get('/api/v1/items', (request, response) => {
   database('items').select()
   .then(item => response.status(200).json(item))
-  .catch(error => response.status(500).send({ error }))
+  .catch(error => response.status(404).send({ error }))
 });
+
 
 app.get('/api/v1/items/:id', (request, response) => {
   database('items').where('id', request.params.id).select()
@@ -82,9 +80,6 @@ app.patch('/api/v1/items/:id/edit', (request, response) => {
       });
     });
 });
-
-
-// ---------------------
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {

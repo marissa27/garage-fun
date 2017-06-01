@@ -13,7 +13,7 @@ getItems = () => {
     itemCount = json.length
     appendCount(itemCount)
     const items = json.map(item => {
-      appendItem(item.name, item.cleanliness, item.id)
+      appendItem(item.name, item.reason, item.cleanliness, item.id)
     });
   }).catch((error) => {
     error: 'cannot getItems'
@@ -45,6 +45,19 @@ postItem = (name, reason, cleanliness) => {
   });
 };
 
+// patchItem = (cleanliness) => {
+//   fetch('/api/v1/items/:id/edit', {
+//     method: 'PATCH',
+//     headers: {'Content-Type': 'application/json'},
+//     body:
+//       JSON.stringify({ 'cleanliness': cleanliness })
+//   }).then((response) => {
+//     return response.json()
+//   }).then((json) => {
+//     console.log(json)
+//   })
+// }
+
 getCount = () => {
   fetch('/api/v1/items', {
     method: 'GET'
@@ -65,10 +78,10 @@ appendCount = (number) => {
   );
 };
 
-appendItem = (name, cleanliness, id) => {
+appendItem = (name, reason, cleanliness, id) => {
   const $itemCard = $('ul');
   $itemCard.prepend(
-    `<li data-id='${id}' class='garage-list-item'>${name}</li>`
+    `<li data-id='${id}' class='garage-list-item ${cleanliness}'>${name}</li>`
   );
   getCount();
 };
@@ -76,14 +89,13 @@ appendItem = (name, cleanliness, id) => {
 appendOneItem = (name, reason, cleanliness) => {
   const $itemInfo = $('.item-info');
   $($itemInfo).empty().append(
-    `
-    <h2>${name}</h2>
+    `<h2>${name}</h2>
     <h4>Reason for having: ${reason}</h4>
-    <select class="dropdown-form form-field" placeholder="Cleanliness Level">
+    <select id="dropdown-solo form-field" placeholder="Cleanliness Level">
       <option class="cleanliness" value="" disabled selected>${cleanliness}</option>
-      <option class='drop-item' value='sparkling'>Sparkling</option>
-      <option class='drop-item' value='dusty'>Dusty</option>
-      <option class='drop-item' value='rancid'>Rancid</option>
+      <option class='drop' value='sparkling'>Sparkling</option>
+      <option class='drop' value='dusty'>Dusty</option>
+      <option class='drop' value='rancid'>Rancid</option>
     </select>`
   );
 };
@@ -96,6 +108,13 @@ $('.submit').on('click', (e) => {
   clearFields();
   postItem($name, $reason, $cleanliness);
 });
+
+// $('select').on('click', '.drop', (e) => {
+//   const cleanliness = e.target.value;
+//   console.log(cleanliness)
+//   console.log('hello')
+//   patchItem(cleanliness);
+// });
 
 $('ul').on('click', 'li', (e) => {
   const id = e.target.dataset.id;
