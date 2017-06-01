@@ -4,7 +4,7 @@
 
 /*--------- DOOR --------------*/
 
-.container {
+/*.container {
   position: relative;
   overflow: hidden;
   width: 900px;
@@ -25,6 +25,33 @@
   background-size: cover;
 }
 
-.door:hover {
+.container:hover .door {
 	top: -100%;
+}*/
+
+/* ------ FORM -------------- */
+.heading {
+  display: flex;
+  align-items: center;
+}
+
+.add-item {
+  margin-left: 20px;
+}
+
+.submit:hover {
+  background-color: pink;
+}
+
+/*----- TYPES of CLEAN ---------*/
+.sparkling {
+  color: blue;
+}
+
+.dusty {
+  color: yellow;
+}
+
+.rancid {
+  color: brown;
 }

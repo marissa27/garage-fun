@@ -65,6 +65,18 @@ app.post('/api/v1/items', (request, response) => {
   }
 });
 
+app.patch('/api/v1/items/:id', (request, response) => {
+  const cleanliness = request.body.cleanliness;
+
+  database('items').where('id', request.params.id).update({ cleanliness })
+  .then(() => {
+    response.status(200).send('changed cleanliness');
+  })
+  .catch(() => {
+    response.status(422).send('could not change');
+  });
+});
+
 
 // ---------------------
 

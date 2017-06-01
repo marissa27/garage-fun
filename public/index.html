@@ -6,25 +6,29 @@
     <title>Garage</title>
   </head>
   <body>
-    <header>
-      <img src='./images/garage-logo.svg' class="logo" alt="garage logo">
-    </header>
 
-    <section class="add-item">
-      <form>
-        <input class="name form-field" type="text" placeholder="What is this thing??">
-        <input class="reason form-field" type="text" placeholder="Gimme a reason for it.">
+    <div class="heading">
+      <header>
+        <img src='./images/garage-logo.svg' class="logo" alt="garage logo">
+      </header>
 
-        <select class="dropdown-form form-field" placeholder="Cleanliness Level">
-          <option class="cleanliness" value="" disabled selected>Select Cleanliness</option>
-          <option class='drop-item' value='dusty'>Sparkling</option>
-          <option class='drop-item' value='rancid'>Dusty</option>
-          <option class='drop-item' value='bleh'>Rancid</option>
-        </select>
+      <section class="add-item">
+        <h3>Add More Items</h3>
+        <form class="add-item-form">
+          <input class="name form-field" type="text" placeholder="What is this thing??">
+          <input class="reason form-field" type="text" placeholder="Gimme a reason for it.">
 
-        <input class="submit" type='submit' value="Submit Item">
-      </form>
-    </section>
+          <select class="dropdown-form form-field" placeholder="Cleanliness Level">
+            <option class="cleanliness" value="" disabled selected>Select Cleanliness</option>
+            <option class='drop-item' value='sparkling'>Sparkling</option>
+            <option class='drop-item' value='dusty'>Dusty</option>
+            <option class='drop-item' value='rancid'>Rancid</option>
+          </select>
+
+          <input class="submit" type='submit' value="Submit Item">
+        </form>
+      </section>
+    </div>
 
     <section class="container">
       <article class="sliding-door">
@@ -32,6 +36,8 @@
 
         <section class='garage'>
           <article class='item-card'>
+            <ul>
+            </ul>
           </article>
         </section>
 
@@ -39,6 +45,7 @@
     </section>
 
     <section class='item-info'>
+
     </section>
 
     <script type="text/javascript" src="./jquery.js"></script>
