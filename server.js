@@ -65,16 +65,22 @@ app.post('/api/v1/items', (request, response) => {
   }
 });
 
-app.patch('/api/v1/items/:id', (request, response) => {
-  const cleanliness = request.body.cleanliness;
-
-  database('items').where('id', request.params.id).update({ cleanliness })
-  .then(() => {
-    response.status(200).send('changed cleanliness');
-  })
-  .catch(() => {
-    response.status(422).send('could not change');
-  });
+app.patch('/api/v1/items/:id/edit', (request, response) => {
+  database('items').where('id', request.params.id)
+    .update({
+      cleanliness: request.body.cleanliness
+    })
+    .then(() => {
+      database('items').select()
+      .then((items) => {
+        response.status(200).json(items);
+      })
+      .catch(error => {
+        response.status(400).send({
+          error: 'Can only change cleanliness.'
+        });
+      });
+    });
 });
 
 

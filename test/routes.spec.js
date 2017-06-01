@@ -32,7 +32,7 @@ describe('Everything', () => {
 
   describe('Client Routes', () => {
 
-    it('should return the homepage', (done) => {
+    it('GET should return the homepage', (done) => {
       chai.request(server)
       .get('/')
       .end((err, response) => {
@@ -42,7 +42,7 @@ describe('Everything', () => {
       })
     })
 
-    it('should return a 404 for a non existent route', (done) => {
+    it('GET should return a 404 for a non existent route', (done) => {
       chai.request(server)
       .get('/sad')
       .end((err, response) => {
@@ -53,7 +53,7 @@ describe('Everything', () => {
   })
 
   describe('API Routes', () => {
-    it('should return all of the items', (done) => {
+    it('GET should return all of the items', (done) => {
       chai.request(server)
       .get('/api/v1/items')
       .end((error, response) => {
@@ -67,7 +67,7 @@ describe('Everything', () => {
       });
     });
 
-    it('should return 404 for non existent route', (done) => {
+    it('GET should return 404 for non existent route', (done) => {
       chai.request(server)
       .get('/api/v1/itemsad')
       .end((error, response) => {
@@ -76,7 +76,7 @@ describe('Everything', () => {
       });
     })
 
-    it('should create a new item', (done) => {
+    it('POST should create a new item', (done) => {
       chai.request(server)
       .post('/api/v1/items')
       .send(
@@ -107,7 +107,7 @@ describe('Everything', () => {
     })
 
 
-    it('should not create an item with missing data', (done) => {
+    it('POST should not create an item with missing data', (done) => {
       chai.request(server)
       .post('/api/v1/items')
       .send({
@@ -146,7 +146,7 @@ describe('Everything', () => {
       })
     })
 
-    it('should return specific item', (done) => {
+    it('GET should return specific item', (done) => {
       chai.request(server)
       .get('/api/v1/items/1')
       .end((error, response) => {
@@ -169,7 +169,42 @@ describe('Everything', () => {
       });
     })
 
-    
+    it('PATCH should allow you to edit the cleanliness', (done) => {
+      chai.request(server)
+      .get('/api/v1/items/2')
+
+      .end((error, response) => {
+        response.body.should.be.a('array');
+        response.body.length.should.equal(1);
+        response.body[0].should.have.property('cleanliness');
+        response.body[0].cleanliness.should.equal('sparkling');
+
+      chai.request(server)
+      .patch('/api/v1/items/2/edit')
+      .send({
+        cleanliness: 'dusty',
+      })
+      .end((error, response) => {
+        response.body[0].should.have.property('name');
+        response.body[0].name.should.equal('ring');
+        response.body[0].should.have.property('cleanliness');
+        response.body[0].cleanliness.should.equal('dusty');
+
+        done();
+      });
+    });
+  });
+
+      it('PATCH should not allow you patch without a value', (done) => {
+        chai.request(server)
+        .patch('/api/v1/items/1')
+        .send({ sad: 'sad' })
+        .end((err, response) => {
+          response.should.have.status(404);
+          response.should.be.html;
+          done();
+        });
+      });
 
 
   })
