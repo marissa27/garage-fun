@@ -33,10 +33,36 @@ app.get('/api/v1/items', (request, response) => {
   });
 });
 
+app.post('/api/v1/items', (request, response) => {
+  const item = request.body;
+
+  const { name, reason, cleanliness } = request.body;
+
+  if (!name) {
+    response.status(422).send({
+      error: 'You are missing the name'
+    })
+  } else if (!reason) {
+    response.status(422).send({
+      error: 'You are missing the reason for the item'
+    })
+  } else if (!cleanliness) {
+    response.status(422).send({
+      error: 'Please tell me if it is sparkling, dusty, or rancid'
+    })
+  } else {
+    database('items').insert(item)
+    .then(junk => {
+      response.status(201).json({ name: name, reason: reason, cleanliness: cleanliness })
+    })
+    .catch(error => {
+      response.status(500).send({ error });
+    })
+  }
+});
 
 
-
-
+// ---------------------
 
 if (!module.parent) {
   app.listen(app.get('port'), () => {
