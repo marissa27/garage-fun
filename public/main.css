@@ -1,3 +1,28 @@
 .logo {
   width: 200px;
 }
+
+/*--------- DOOR --------------*/
+
+.container {
+	position: relative;
+	overflow: hidden;
+}
+.door {
+	position: absolute;
+	height: 100%;
+	width: 65%;
+	top: 0%;
+	transition: all ease .9s;
+	-moz-transition: all ease .9s;
+	-webkit-transition: all ease .9s;
+	-o-transition: all ease .9s;
+	-ms-transition: all ease .9;
+	left: 0%;
+	background: url(./images/garage.svg) no-repeat;
+  background-size: cover;
+}
+
+.door:hover {
+	top: -100%;
+}

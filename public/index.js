@@ -21,10 +21,11 @@ getItems = () => {
 appendItem = (name, reason, cleanliness) => {
   const $itemCard = $('.item-card');
   $itemCard.prepend(
-    `<h3>${name}</h3>
-      <ul>
-        <li>Reason: ${reason}</li>
-        <li>Cleanliness: ${cleanliness}</li>
-      </ul>`
+    `<h3>${name}</h3>`
   );
 };
+
+// <ul>
+//   <li>Reason: ${reason}</li>
+//   <li>Cleanliness: ${cleanliness}</li>
+// </ul>
