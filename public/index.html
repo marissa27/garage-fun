@@ -7,34 +7,36 @@
   </head>
   <body>
 
+    <section class="count-area">
+      <h2>I have <span class='item-number'></span> item(s).</h2>
+    </section>
+
     <div class='heading'>
       <header>
         <img src='./images/garage-logo.svg' class='logo' alt='garage logo'>
         <section class='remote-area'>
+            <p class="remote remote-words">Open / Close Garage</p>
           <img class='remote' src='./images/remote.svg'>
+        </section>
+        <section class='add-item'>
+          <h3 class="add-item-header">Add More Items</h3>
+          <form class='add-item-form'>
+            <input class='name form-field' type='text' placeholder='Name'>
+            <input class='reason form-field' type='text' placeholder='Reason'>
+
+            <select class='dropdown-form form-field' placeholder='Cleanliness Level'>
+              <option class='cleanliness' value='' disabled selected>Select Cleanliness</option>
+              <option class='drop-item' value='sparkling'>Sparkling</option>
+              <option class='drop-item' value='dusty'>Dusty</option>
+              <option class='drop-item' value='rancid'>Rancid</option>
+            </select>
+
+            <input class='submit' type='submit' value='Submit Item'>
+          </form>
         </section>
       </header>
 
-
-      <section class='add-item'>
-        <h3>Add More Items</h3>
-        <form class='add-item-form'>
-          <input class='name form-field' type='text' placeholder='Name'>
-          <input class='reason form-field' type='text' placeholder='Reason'>
-
-          <select class='dropdown-form form-field' placeholder='Cleanliness Level'>
-            <option class='cleanliness' value='' disabled selected>Select Cleanliness</option>
-            <option class='drop-item' value='sparkling'>Sparkling</option>
-            <option class='drop-item' value='dusty'>Dusty</option>
-            <option class='drop-item' value='rancid'>Rancid</option>
-          </select>
-
-        </form>
-        <input class='submit' type='submit' value='Submit Item'>
-      </section>
     </div>
-
-    <h2>I have <span class='item-number'></span> item(s).</h2>
 
     <section class='container'>
       <article class='sliding-door'>
@@ -42,7 +44,8 @@
 
         <section class='garage'>
           <article class='item-card'>
-            <ul>
+            <h5>Click an Item for info</h5>
+            <ul id="double">
             </ul>
           </article>
         </section>

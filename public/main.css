@@ -1,11 +1,17 @@
 header {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  margin-top: 30px;
 }
 
 .logo {
   width: 200px;
+}
+
+.count-area {
+  position: absolute;
+  top: 0;
 }
 
 /*--------- DOOR --------------*/
@@ -13,10 +19,15 @@ header {
   width: 50px;
 }
 
+.remote-words {
+  font-size: 10px;
+  width: 90px;
+}
+
 .container {
   position: relative;
   overflow: scroll;
-  width: 100%;
+  width: 65%;
 }
 
 .door {
@@ -40,23 +51,29 @@ header {
 
 /* ------ FORM -------------- */
 
-h3 {
+.add-item-header {
   text-align: center;
 }
 
 form {
   display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-field {
+  margin-bottom: 10px;
 }
 
 .submit {
   font-family: sans-serif;
   text-transform: uppercase;
   background-color: #fdac00;
-  padding: 15px;
+  padding: 5px;
   border-radius: 3px;
   box-shadow: 1px 1px 1px #00d0bc;
-
+  margin-bottom: 10px;
 }
 
 .submit:hover {
@@ -76,4 +93,23 @@ form {
 
 .rancid {
   color: brown;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border: 1px solid black;
+}
+
+li {
+  width: 50%;
+}
+
+.item-info {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 50%;
+  right: 10%;
 }

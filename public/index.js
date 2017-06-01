@@ -76,8 +76,9 @@ appendItem = (name, cleanliness, id) => {
 appendOneItem = (name, reason, cleanliness) => {
   const $itemInfo = $('.item-info');
   $($itemInfo).empty().append(
-    `<h3>${name}</h3>
-    <h4>${reason}</h4>
+    `
+    <h2>${name}</h2>
+    <h4>Reason for having: ${reason}</h4>
     <select class="dropdown-form form-field" placeholder="Cleanliness Level">
       <option class="cleanliness" value="" disabled selected>${cleanliness}</option>
       <option class='drop-item' value='sparkling'>Sparkling</option>
