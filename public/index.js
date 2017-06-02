@@ -91,19 +91,6 @@ postItem = (name, reason, cleanliness) => {
   });
 };
 
-// patchItem = (cleanliness) => {
-//   fetch('/api/v1/items/:id/edit', {
-//     method: 'PATCH',
-//     headers: {'Content-Type': 'application/json'},
-//     body:
-//       JSON.stringify({ 'cleanliness': cleanliness })
-//   }).then((response) => {
-//     return response.json()
-//   }).then((json) => {
-//     console.log(json)
-//   })
-// }
-
 getCount = () => {
   fetch('/api/v1/items', {
     method: 'GET'
@@ -130,7 +117,7 @@ appendNumbers = (sparkling, dusty, rancid) => {
   $('#sparkling-number').html(
     `<span class='item-number'>${sparkling}</span>`
   );
-  
+
   $('#dusty-number').append(
     `<span class='item-number'>${dusty}</span>`
   );
@@ -183,13 +170,6 @@ $('.order-des').on('click', (e) => {
   $('ul').empty()
   getOrderDes();
 })
-
-// $('select').on('click', '.drop', (e) => {
-//   const cleanliness = e.target.value;
-//   console.log(cleanliness)
-//   console.log('hello')
-//   patchItem(cleanliness);
-// });
 
 $('ul').on('click', 'li', (e) => {
   const id = e.target.dataset.id;
