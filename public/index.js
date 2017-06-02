@@ -119,9 +119,23 @@ getCount = () => {
   });
 };
 
-appendNumbers = (sparkling, dusty) => {
+appendNumbers = (sparkling, dusty, rancid) => {
   console.log(sparkling, dusty, rancid)
   
+  const $sparkNumber = $('.sparkling-number');
+  $sparkNumber.html(
+    `<span class='item-number'>${sparkling}</span>`
+  );
+
+  const $dustyNumber = $('.dusty-number');
+  $dustyNumber.html(
+    `<span class='item-number'>${dusty}</span>`
+  );
+
+  const $rancidNumber = $('.rancid-number');
+  $rancidNumber.html(
+    `<span class='item-number'>${rancid}</span>`
+  );
 }
 
 appendCount = (number) => {
