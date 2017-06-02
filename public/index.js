@@ -12,9 +12,29 @@ getItems = () => {
   }).then((json) => {
     itemCount = json.length
     appendCount(itemCount)
-    const items = json.map(item => {
+
+    let sparkling = 0;
+    let dusty = 0;
+    let rancid = 0;
+
+    const items = json.forEach(item => {
       appendItem(item.name, item.reason, item.cleanliness, item.id)
+
+
+      if (item.cleanliness === 'sparkling') {
+        // sparkling.push(item.cleanliness)
+        sparkling++
+
+      } else if (item.cleanliness === 'dusty') {
+        dusty++
+
+      } else if (item.cleanliness === 'rancid') {
+        rancid++
+      }
+
     });
+    console.log('helllllo')
+    appendNumbers(sparkling, dusty, rancid)
   }).catch((error) => {
     error: 'cannot getItems'
   });
@@ -26,8 +46,6 @@ getOrderAsc = () => {
   }).then((response) => {
     return response.json()
   }).then((json) => {
-    itemCount = json.length
-    appendCount(itemCount)
     const items = json.map(item => {
       appendItem(item.name, item.reason, item.cleanliness, item.id)
     });
@@ -42,8 +60,6 @@ getOrderDes = () => {
   }).then((response) => {
     return response.json()
   }).then((json) => {
-    itemCount = json.length
-    appendCount(itemCount)
     const items = json.map(item => {
       appendItem(item.name, item.reason, item.cleanliness, item.id)
     });
@@ -102,6 +118,11 @@ getCount = () => {
     error: 'cannot getItems'
   });
 };
+
+appendNumbers = (sparkling, dusty) => {
+  console.log(sparkling, dusty, rancid)
+  
+}
 
 appendCount = (number) => {
   const $spanNumber = $('.item-number');
