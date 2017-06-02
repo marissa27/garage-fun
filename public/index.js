@@ -20,7 +20,6 @@ getItems = () => {
     const items = json.forEach(item => {
       appendItem(item.name, item.reason, item.cleanliness, item.id)
 
-
       if (item.cleanliness === 'sparkling') {
         // sparkling.push(item.cleanliness)
         sparkling++
@@ -33,7 +32,6 @@ getItems = () => {
       }
 
     });
-    console.log('helllllo')
     appendNumbers(sparkling, dusty, rancid)
   }).catch((error) => {
     error: 'cannot getItems'
@@ -119,31 +117,29 @@ getCount = () => {
   });
 };
 
-appendNumbers = (sparkling, dusty, rancid) => {
-  console.log(sparkling, dusty, rancid)
-  
-  const $sparkNumber = $('.sparkling-number');
-  $sparkNumber.html(
-    `<span class='item-number'>${sparkling}</span>`
-  );
-
-  const $dustyNumber = $('.dusty-number');
-  $dustyNumber.html(
-    `<span class='item-number'>${dusty}</span>`
-  );
-
-  const $rancidNumber = $('.rancid-number');
-  $rancidNumber.html(
-    `<span class='item-number'>${rancid}</span>`
-  );
-}
-
 appendCount = (number) => {
   const $spanNumber = $('.item-number');
   $spanNumber.html(
     `<span class='item-number'>${number}</span>`
   );
 };
+
+appendNumbers = (sparkling, dusty, rancid) => {
+  console.log(sparkling, dusty, rancid)
+
+  $('#sparkling-number').html(
+    `<span class='item-number'>${sparkling}</span>`
+  );
+  
+  $('#dusty-number').append(
+    `<span class='item-number'>${dusty}</span>`
+  );
+
+  $('#rancid-number').append(
+    `<span class='item-number'>${rancid}</span>`
+  );
+}
+
 
 appendItem = (name, reason, cleanliness, id) => {
   const $itemCard = $('ul');
