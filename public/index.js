@@ -10,8 +10,6 @@ getItems = () => {
   }).then((response) => {
     return response.json()
   }).then((json) => {
-    itemCount = json.length;
-    appendCount(itemCount);
 
     let sparkling = 0;
     let dusty = 0;
@@ -33,6 +31,8 @@ getItems = () => {
 
     });
     appendNumbers(sparkling, dusty, rancid)
+    itemCount = json.length;
+    appendCount(itemCount);
   }).catch((error) => {
     error: 'cannot getItems'
   });
@@ -118,14 +118,14 @@ appendNumbers = (sparkling, dusty, rancid) => {
     `<span class='item-number'>${sparkling}</span>`
   );
 
-  $('#dusty-number').append(
+  $('#dusty-number').html(
     `<span class='item-number'>${dusty}</span>`
   );
 
-  $('#rancid-number').append(
+  $('#rancid-number').html(
     `<span class='item-number'>${rancid}</span>`
   );
-}
+};
 
 
 appendItem = (name, reason, cleanliness, id) => {
