@@ -35,6 +35,22 @@ app.get('/api/v1/items/:id', (request, response) => {
     });
 });
 
+app.get('/api/v1/asc', (request, response) => {
+  database('items').select().orderBy('name', 'asc')
+  .then(item => response.status(200).json(item))
+  .catch((error) => {
+    response.status(500).send('sorry - you own nothing', error);
+  });
+});
+
+app.get('/api/v1/desc', (request, response) => {
+  database('items').select().orderBy('name', 'desc')
+  .then(item => response.status(200).json(item))
+  .catch((error) => {
+    response.status(500).send('sorry - you own nothing', error);
+  });
+});
+
 app.post('/api/v1/items', (request, response) => {
   const item = request.body;
 

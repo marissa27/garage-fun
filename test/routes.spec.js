@@ -195,17 +195,62 @@ describe('Everything', () => {
     });
   });
 
-      it('PATCH should not allow you patch without a value', (done) => {
-        chai.request(server)
-        .patch('/api/v1/items/1')
-        .send({ sad: 'sad' })
-        .end((err, response) => {
-          response.should.have.status(404);
-          response.should.be.html;
-          done();
-        });
+    it('PATCH should not allow you patch without a value', (done) => {
+      chai.request(server)
+      .patch('/api/v1/items/1')
+      .send({ sad: 'sad' })
+      .end((err, response) => {
+        response.should.have.status(404);
+        response.should.be.html;
+        done();
       });
+    });
 
+    it('GET should return all of the items in asc order', (done) => {
+      chai.request(server)
+      .get('/api/v1/asc')
+      .end((error, response) => {
+        response.should.have.status(200)
+        response.should.be.json
+        response.body.should.be.a('array')
+        response.body.length.should.equal(3)
+        response.body[0].should.have.property('name')
+        response.body[0].name.should.equal('grandma')
+        done()
+      });
+    });
+
+    it('GET should return 404 for non existent route', (done) => {
+      chai.request(server)
+      .get('/api/v1/itemsad')
+      .end((error, response) => {
+        response.should.have.status(404)
+        done()
+      });
+    })
+
+    it('GET should return all of the items in desc order', (done) => {
+      chai.request(server)
+      .get('/api/v1/desc')
+      .end((error, response) => {
+        response.should.have.status(200)
+        response.should.be.json
+        response.body.should.be.a('array')
+        response.body.length.should.equal(3)
+        response.body[0].should.have.property('name')
+        response.body[0].name.should.equal('slaughterhouse5')
+        done()
+      });
+    });
+
+    it('GET should return 404 for non existent route', (done) => {
+      chai.request(server)
+      .get('/api/v1/itemsad')
+      .end((error, response) => {
+        response.should.have.status(404)
+        done()
+      });
+    })
 
   })
 })

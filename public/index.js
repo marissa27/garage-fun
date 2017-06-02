@@ -20,6 +20,38 @@ getItems = () => {
   });
 };
 
+getOrderAsc = () => {
+  fetch('/api/v1/asc', {
+    method: 'GET'
+  }).then((response) => {
+    return response.json()
+  }).then((json) => {
+    itemCount = json.length
+    appendCount(itemCount)
+    const items = json.map(item => {
+      appendItem(item.name, item.reason, item.cleanliness, item.id)
+    });
+  }).catch((error) => {
+    error: 'cannot order items'
+  });
+};
+
+getOrderDes = () => {
+  fetch('/api/v1/asc', {
+    method: 'GET'
+  }).then((response) => {
+    return response.json()
+  }).then((json) => {
+    itemCount = json.length
+    appendCount(itemCount)
+    const items = json.map(item => {
+      appendItem(item.name, item.reason, item.cleanliness, item.id)
+    });
+  }).catch((error) => {
+    error: 'cannot order items'
+  });
+};
+
 const grabItem = (id) => {
   fetch(`/api/v1/items/${id}`)
   .then(response => response.json())
@@ -108,6 +140,18 @@ $('.submit').on('click', (e) => {
   clearFields();
   postItem($name, $reason, $cleanliness);
 });
+
+$('.order').on('click', (e) => {
+  e.preventDefault();
+  $('ul').empty()
+  getOrderAsc();
+})
+
+$('.order-des').on('click', (e) => {
+  e.preventDefault();
+  $('ul').empty()
+  getOrderDes();
+})
 
 // $('select').on('click', '.drop', (e) => {
 //   const cleanliness = e.target.value;
