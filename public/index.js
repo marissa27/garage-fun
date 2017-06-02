@@ -10,8 +10,8 @@ getItems = () => {
   }).then((response) => {
     return response.json()
   }).then((json) => {
-    itemCount = json.length
-    appendCount(itemCount)
+    itemCount = json.length;
+    appendCount(itemCount);
 
     let sparkling = 0;
     let dusty = 0;
@@ -97,8 +97,8 @@ getCount = () => {
   }).then((response) => {
     return response.json()
   }).then((json) => {
-    itemCount = json.length
-    appendCount(itemCount)
+    itemCount = json.length;
+    appendCount(itemCount);
   }).catch((error) => {
     error: 'cannot getItems'
   });
