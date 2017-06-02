@@ -37,7 +37,7 @@ getOrderAsc = () => {
 };
 
 getOrderDes = () => {
-  fetch('/api/v1/asc', {
+  fetch('/api/v1/desc', {
     method: 'GET'
   }).then((response) => {
     return response.json()
